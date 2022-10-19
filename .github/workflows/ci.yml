@@ -27,5 +27,5 @@ jobs:
       
     - name: Send Push
       run: |
-        echo ${{ secrets.LARK_HOOK_URL }} LARK_HOOK_URL='${{ secrets.LARK_HOOK_URL }}' pnpm run start
+        echo ${{ secrets.LARK_HOOK_URL }} && LARK_HOOK_URL='${{ secrets.LARK_HOOK_URL }}' && pnpm run start
   
