@@ -3,15 +3,15 @@ name: hacker-news-lark-push
 on:
   schedule:
     - cron: "0 2 * * 1-5"
-    
+
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [16]
+        node-version: [18]
     steps:
     - uses: actions/checkout@v2
     - uses: pnpm/action-setup@v2.0.1
@@ -24,8 +24,8 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install
-      
+
     - name: Send Push
       run: |
         LARK_SCERCT='${{ secrets.LARK_SCERCT }}' pnpm run start
-  
+
