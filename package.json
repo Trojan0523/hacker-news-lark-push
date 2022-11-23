@@ -11,9 +11,6 @@
   "keywords": [],
   "author": "Trojan0523",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.0.0"
-  },
   "devDependencies": {
     "@types/node": "^18.11.2",
     "esno": "^0.16.3",
