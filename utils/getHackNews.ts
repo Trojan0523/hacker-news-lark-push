@@ -2,17 +2,16 @@
  * @Author: BuXiongYu
  * @Date: 2022-10-19 11:24:54
  * @LastEditors: BuXiongYu
- * @LastEditTime: 2022-10-19 11:29:18
+ * @LastEditTime: 2022-11-23 12:11:33
  * @Description: get hacker news
  */
-import axios from "axios";
-
 export default async function getHackerNews () {
-  const { data = [] } = await axios.get('https://hacker-news.firebaseio.com/v0/showstories.json');
-  const promises = data
+  const data = await fetch('https://hacker-news.firebaseio.com/v0/showstories.json');
+  const jsonData: Array<number> = await data.json();
+  const promises = jsonData
       .slice(0, 10)
-      .map((itemId) => axios.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`));
+      .map(async (itemId) => await (await fetch(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`)).json());
   const newses = await Promise.all(promises);
-  return newses.map(item => item.data);
+  return newses;
 }
 
