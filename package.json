@@ -5,6 +5,7 @@
   "main": "main.ts",
   "scripts": {
     "start": "esno main.ts",
+    "debug": "esno --inspect-brk=8888 main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,5 +18,16 @@
     "@types/node": "^18.11.2",
     "esno": "^0.16.3",
     "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "node-fetch": "*"
+  },
+  "peerDependenciesMeta": {
+    "node-fetch": {
+      "optional": true
+    }
+  },
+  "volta": {
+    "node": "18.12.1"
   }
 }

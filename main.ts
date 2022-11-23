@@ -2,10 +2,9 @@
  * @Author: BuXiongYu
  * @Date: 2022-10-19 11:23:51
  * @LastEditors: BuXiongYu
- * @LastEditTime: 2022-10-19 11:44:11
+ * @LastEditTime: 2022-11-23 12:12:29
  * @Description: hacker push lark bot
  */
-import axios from "axios";
 import getHackerNews from './utils/getHackNews';
 
 export default async function hackerNewsPush () {
@@ -41,9 +40,12 @@ export default async function hackerNewsPush () {
         },
       ],
     };
-    axios.post(`https://open.feishu.cn/open-apis/bot/v2/hook/${process.env.LARK_SCERCT}`, {
-      msg_type:"interactive",
-      card,
+    await fetch(`https://open.feishu.cn/open-apis/bot/v2/hook/${process.env.LARK_SCERCT}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        msg_type:"interactive",
+        card,
+      })
     })
 };
 
