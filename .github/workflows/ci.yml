@@ -21,11 +21,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
+        cache: 'npm'
     - name: Install dependencies
-      run: pnpm install
+      run: npm install
 
     - name: Send Push
       run: |
-        LARK_SCERCT='${{ secrets.LARK_SCERCT }}' pnpm run start
+        LARK_SCERCT='${{ secrets.LARK_SCERCT }}' npm run start
 
